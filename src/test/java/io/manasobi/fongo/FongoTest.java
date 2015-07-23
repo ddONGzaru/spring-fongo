@@ -28,17 +28,17 @@ public class FongoTest {
 	private ApplicationContext applicationContext;
 	
 	@Autowired 
-	private PersonRepository personRepository;
+	private PersonRepo personRepo;
 
 
 	@Test
 	@UsingDataSet(locations = {"/dataset/two-person.json"}, loadStrategy = LoadStrategyEnum.CLEAN_INSERT)
     public void testInsertPersonWithNameJohnathanAndRandomAge(){
 		
-         this.personRepository.insertPersonWithNameJohnathan(35);
-         this.personRepository.insertPersonWithNameJohnathan(67);
+         this.personRepo.insertPerson(35);
+         this.personRepo.insertPerson(67);
          
-         long total = this.personRepository.countAllPersons();
+         long total = this.personRepo.countAllPersons();
          
          assertThat(total).isEqualTo(4);
     }
@@ -47,7 +47,7 @@ public class FongoTest {
 	@UsingDataSet(locations = {"/dataset/five-person.json"}, loadStrategy = LoadStrategyEnum.CLEAN_INSERT)
     public void testCountAllPersons(){
 		
-         long total = this.personRepository.countAllPersons();
+         long total = this.personRepo.countAllPersons();
          
          assertThat(total).isEqualTo(5);
     }
@@ -56,7 +56,7 @@ public class FongoTest {
 	@UsingDataSet(locations = {"/dataset/five-person.json"}, loadStrategy = LoadStrategyEnum.CLEAN_INSERT)
     public void testCountUnderAge(){
 		
-         long total = this.personRepository.countUnderAge();
+         long total = this.personRepo.countUnderAge();
          
          assertThat(total).isEqualTo(3);
     }

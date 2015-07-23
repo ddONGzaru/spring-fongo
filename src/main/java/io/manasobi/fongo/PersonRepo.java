@@ -12,9 +12,9 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class PersonRepository {
+public class PersonRepo {
 
-    static final Logger logger = LoggerFactory.getLogger(PersonRepository.class);
+    static final Logger logger = LoggerFactory.getLogger(PersonRepo.class);
 
     @Autowired
     MongoTemplate mongoTemplate;
@@ -43,9 +43,9 @@ public class PersonRepository {
         return total;
     }
 
-    public void insertPersonWithNameJohnathan(double age) {
+    public void insertPerson(double age) {
     	
-        Person p = new Person("Johnathan", (int) age);
+        Person p = new Person("manasobi", (int) age);
 
         mongoTemplate.insert(p);
     }
