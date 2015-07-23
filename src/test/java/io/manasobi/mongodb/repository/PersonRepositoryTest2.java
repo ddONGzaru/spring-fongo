@@ -60,8 +60,7 @@ public class PersonRepositoryTest2 {
 	/**
 	 * Expected results are in "one-person.json" file
 	 */
-	@Test
-	@ShouldMatchDataSet(location = "/two-person.json")
+	@Test	
     public void testInsertPersonWithNameJohnathanAndRandomAge(){
 		
          this.personRepository.insertPersonWithNameJohnathan(35);
