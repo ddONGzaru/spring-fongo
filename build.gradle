@@ -31,7 +31,6 @@ repositories {
 
 dependencies {
     compile 'org.springframework.boot:spring-boot-starter-data-mongodb'
-	compile('org.jongo:jongo:1.2')
 	
     testCompile 'org.springframework.boot:spring-boot-starter-test' 
     testCompile 'com.lordofthejars:nosqlunit-mongodb:0.8.1'

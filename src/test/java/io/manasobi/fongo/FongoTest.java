@@ -35,10 +35,10 @@ public class FongoTest {
 	@UsingDataSet(locations = {"/dataset/two-person.json"}, loadStrategy = LoadStrategyEnum.CLEAN_INSERT)
     public void testInsertPersonWithNameJohnathanAndRandomAge(){
 		
-         this.personRepo.insertPerson(35);
-         this.personRepo.insertPerson(67);
+         this.personRepo.save(35);
+         this.personRepo.save(67);
          
-         long total = this.personRepo.countAllPersons();
+         long total = this.personRepo.count();
          
          assertThat(total).isEqualTo(4);
     }
@@ -47,7 +47,7 @@ public class FongoTest {
 	@UsingDataSet(locations = {"/dataset/five-person.json"}, loadStrategy = LoadStrategyEnum.CLEAN_INSERT)
     public void testCountAllPersons(){
 		
-         long total = this.personRepo.countAllPersons();
+         long total = this.personRepo.count();
          
          assertThat(total).isEqualTo(5);
     }

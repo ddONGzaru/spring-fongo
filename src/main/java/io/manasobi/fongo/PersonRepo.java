@@ -1,8 +1,6 @@
 package io.manasobi.fongo;
 
 
-import java.util.List;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,39 +25,27 @@ public class PersonRepo {
 
         query.addCriteria(criteria);
         
-        long count = this.mongoTemplate.count(query, Person.class);
+        long count = mongoTemplate.count(query, Person.class);
         
         logger.info("Total number of under age in database: {}", count);
         
         return count;
     }
 
-    public long countAllPersons() {
+    public long count() {
     	
-    	long total = this.mongoTemplate.count(null, Person.class);
+    	long total = mongoTemplate.count(null, Person.class);
     	
         logger.info("Total number in database: {}", total);
         
         return total;
     }
 
-    public void insertPerson(double age) {
+    public void save(double age) {
     	
         Person p = new Person("manasobi", (int) age);
 
         mongoTemplate.insert(p);
     }
-
-    public void createPersonCollection() {
-    	
-        if (!mongoTemplate.collectionExists(Person.class)) {
-            mongoTemplate.createCollection(Person.class);
-        }
-    }
-
-    public void dropPersonCollection() {
-        if (mongoTemplate.collectionExists(Person.class)) {
-            mongoTemplate.dropCollection(Person.class);
-        }
-    }
+    
 }
